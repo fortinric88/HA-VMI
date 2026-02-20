@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventilairsec VMI Monitor</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🌬️ Ventilairsec VMI Monitor</h1>
+                <p class="subtitle">Surveillez votre système de ventilation en temps réel</p>
+            </div>
+            <div class="status-indicator">
+                <span id="status" class="status-dot"></span>
+                <span id="status-text">Connexion...</span>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" onclick="showTab('dashboard')">📊 Tableau de Bord</button>
+            <button class="nav-btn" onclick="showTab('history')">📈 Historique</button>
+            <button class="nav-btn" onclick="showTab('settings')">⚙️ Paramètres</button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="main-content">
+
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="cards-grid" id="devicesContainer">
+                    <!-- Device cards will be loaded here -->
+                    <div class="loading">Chargement des appareils...</div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history" class="tab-content">
+                <div class="history-controls">
+                    <select id="deviceSelect" onchange="loadDeviceHistory()">
+                        <option value="">Sélectionner un appareil</option>
+                    </select>
+                    <select id="metricSelect" onchange="loadDeviceHistory()">
+                        <option value="">Sélectionner une métrique</option>
+                    </select>
+                    <button onclick="refreshHistory()">Rafraîchir</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="historyChart"></canvas>
+                </div>
+                <div id="statsContainer" class="stats-grid">
+                    <!-- Stats will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-content">
+                <div class="settings-panel">
+                    <h2>Configuration</h2>
+                    <div class="settings-item">
+                        <label>Port Série:</label>
+                        <input type="text" id="serialPort" placeholder="/dev/ttyAMA0" readonly>
+                    </div>
+                    <div class="settings-item">
+                        <label>Niveau de Journalisation:</label>
+                        <select id="logLevel" disabled>
+                            <option>info</option>
+                            <option>debug</option>
+                            <option>warning</option>
+                            <option>error</option>
+                        </select>
+                    </div>
+                    <div class="settings-item">
+                        <label>Intervalle de Mise à Jour (secondes):</label>
+                        <input type="number" id="updateInterval" disabled min="5" max="600">
+                    </div>
+                    <div class="info-box">
+                        <h3>📋 Appareils Configurés</h3>
+                        <ul id="devicesList"></ul>
+                    </div>
+                    <div class="info-box">
+                        <h3>📊 Statistiques de Base de Données</h3>
+                        <p>Chemin: <code>/config/ventilairsec/db</code></p>
+                        <button onclick="cleanupOldData()">Nettoyer les données (30+ jours)</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Ventilairsec VMI Monitor | <a href="https://github.com/fortinric88/HA-VMI" target="_blank">Documentation</a></p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

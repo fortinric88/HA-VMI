@@ -1,0 +1,34 @@
+{
+  "serial_port": "/dev/ttyAMA0",
+  "log_level": "info",
+  "update_interval": 10,
+  "web_port": 5000,
+  "devices": {
+    "vmi": {
+      "id": "0x0421574F",
+      "name": "VMI Purevent",
+      "type": "d1079-01-00",
+      "enabled": true
+    },
+    "assistant": {
+      "id": "0x0422407D",
+      "name": "Assistant Ventilairsec",
+      "type": "d1079-00-00",
+      "enabled": true
+    },
+    "sensors": [
+      {
+        "id": "0x81003227",
+        "name": "Capteur CO2 Salon",
+        "type": "a5-09-04",
+        "enabled": true
+      },
+      {
+        "id": "0x810054F5",
+        "name": "Capteur Température Humidité",
+        "type": "a5-04-01",
+        "enabled": true
+      }
+    ]
+  }
+}
