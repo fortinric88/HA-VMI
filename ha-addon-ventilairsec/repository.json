@@ -1,7 +1,0 @@
-{
-  "name": "Ventilairsec VMI Monitor",
-  "url": "https://github.com/fortinric88/HA-VMI",
-  "maintainer": "Ventilairsec VMI Monitor Contributors",
-  "codeowners": ["@fortinric88"],
-  "documentation": "https://github.com/fortinric88/HA-VMI/blob/main/ha-addon-ventilairsec/README.md"
-}

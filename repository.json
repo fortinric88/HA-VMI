@@ -1,0 +1,13 @@
+{
+  "name": "HA-VMI Addons Repository",
+  "url": "https://github.com/fortinric88/HA-VMI",
+  "maintainer": "fortinric88",
+  "addons": [
+    {
+      "name": "Ventilairsec VMI Monitor",
+      "slug": "ventilairsec-vmi",
+      "description": "Monitor Ventilairsec Purevent VMI via EnOcean GPIO module with historical data and web dashboard",
+      "url": "https://github.com/fortinric88/HA-VMI/tree/main/ventilairsec-vmi"
+    }
+  ]
+}
